@@ -1,0 +1,22 @@
+TITLE 'Display the first one while given two ASCII charecter'
+.MODEL MEDIUM
+.STACK 100H
+.DATA
+.CODE
+MAIN PROC			
+	MOV AH,2
+	MOV Al,'Z'
+	MOV BL,'X'
+	CMP AL,BL
+	JNLE ELSE_
+	MOV DL,AL
+	INT 21H
+	JMP END_IF
+	ELSE_:
+		MOV DL,BL
+		INT 21H
+	END_IF:
+	MOV AH,4CH
+	INT 21H
+MAIN ENDP
+END MAIN

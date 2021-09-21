@@ -1,0 +1,32 @@
+TITLE 'Display ? and read a charecter and print it to the next line'
+.MODEL SMALL
+.STACK 100H
+.DATA
+MSG DB 'CSTE DEPARTMENT$'
+.CODE
+MAIN PROC
+MOV AH,2
+MOV DL,'?'
+INT 21H
+
+;INPUT A CHARECTER
+MOV AH,1
+INT 21H
+MOV BL,AL ;SAVE IT
+
+
+;enter
+MOV AH,2
+MOV DL, 0DH
+INT 21H
+;new line
+MOV DL, 0AH
+INT 21H
+
+MOV DL,BL
+INT 21H 
+MOV AH,4CH
+INT 21H
+MAIN ENDP
+END MAIN
+

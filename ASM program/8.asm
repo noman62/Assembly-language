@@ -1,0 +1,22 @@
+TITLE 'list of charecter untill enter pressed'
+.MODEL SMALL
+.STACK 100H
+.DATA
+.CODE
+MAIN PROC
+
+MOV AH,1
+TOP_:
+CMP AL, 0DH
+JE ENDLOOP_
+
+ INT 21H
+ LOOP TOP_
+
+ENDLOOP_:
+
+MOV AH,4CH
+INT 21H
+MAIN ENDP
+END MAIN
+

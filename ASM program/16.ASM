@@ -1,0 +1,35 @@
+TITLE 'Display even or odd'
+.MODEL MEDIUM
+.STACK 100H
+.DATA
+.CODE
+MAIN PROC			
+	MOV AH,1
+	INT 21H
+	CMP AL,'1'
+	JE ODD_
+	CMP AL,'3'
+	JE ODD_
+	CMP AL,'2'
+	JE EVEN_
+	CMP AL,'4'
+	JE EVEN_
+	JMP EXIT
+	ODD_:
+		MOV AL,'o'
+		MOV AH,2  
+		MOV DL,AL
+		INT 21H  
+		JMP EXIT
+	EVEN_:
+		MOV AL,'e'
+		MOV AH,2  
+		MOV DL,AL
+		INT 21H  
+		JMP EXIT
+	
+	EXIT:
+	MOV AH,4CH
+	INT 21H
+MAIN ENDP
+END MAIN
